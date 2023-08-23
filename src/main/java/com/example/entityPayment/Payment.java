@@ -19,7 +19,8 @@ public class Payment {
 	private Date payment_date;
 	private boolean payment_done;
 	private boolean payment_receipt_send;
-	private double Amount;
+	private double amount;
+	private String payment_type ;
 	
 	public Payment() {
 		super();
@@ -67,11 +68,19 @@ public class Payment {
 	}
 
 	public double getAmount() {
-		return Amount;
+		return amount;
 	}
 
 	public void setAmount(double amount) {
-		Amount = amount;
+		this.amount = amount;
+	}
+
+	public String getPayment_type() {
+		return payment_type;
+	}
+
+	public void setPayment_type(String payment_type) {
+		this.payment_type = payment_type;
 	}
 	
 	

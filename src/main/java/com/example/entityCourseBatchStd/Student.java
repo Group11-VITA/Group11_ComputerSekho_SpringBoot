@@ -3,7 +3,7 @@ package com.example.entityCourseBatchStd;
 import java.util.*;
 
 import com.example.entityPayment.Payment;
-import com.example.entityPayment.PaymentMaster;
+
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -30,10 +30,13 @@ public class Student {
 	private String student_mobile;
 	private String student_passsword;
 	private String student_username;
+	private double course_fees;
 
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="student_id", referencedColumnName = "student_id" )
-	private Set<PaymentMaster> payment_master;
+//	@OneToMany(cascade=CascadeType.ALL)
+//	@JoinColumn(name="student_id", referencedColumnName = "student_id" )
+//	private Set<PaymentMaster> payment_master;
+
+	
 
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name = "student_id" , referencedColumnName = "student_id")
@@ -46,13 +49,13 @@ public class Student {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Set<PaymentMaster> getPayment_master() {
-		return payment_master;
-	}
-
-	public void setPayment_master(Set<PaymentMaster> payment_master) {
-		this.payment_master = payment_master;
-	}
+//	public Set<PaymentMaster> getPayment_master() {
+//		return payment_master;
+//	}
+//
+//	public void setPayment_master(Set<PaymentMaster> payment_master) {
+//		this.payment_master = payment_master;
+//	}
 
 	public Set<Payment> getPayments() {
 		return payments;
@@ -143,7 +146,13 @@ public class Student {
 	}
 
 	
+	public double getCourse_fees() {
+		return course_fees;
+	}
 
+	public void setCourse_fees(double course_fees) {
+		this.course_fees = course_fees;
+	}
 	
 
 }

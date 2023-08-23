@@ -46,4 +46,18 @@ public class PaymentServiceImp implements PaymentServices {
 		return payment;
 	}
 
+	@Override
+	public  List<Payment> paymentByStdID(int studentid) {
+		// TODO Auto-generated method stub
+		List<Payment> stdPaymet = payment_repository.paymentByStdID(studentid);	
+		return stdPaymet ;
+	}
+//
+//	@Override
+//	public List<Payment> paymentByBatchID(int batchid) {
+//		// TODO Auto-generated method stub
+//		List<Payment> batchPaymet = payment_repository.paymentByBatchID(batchid);
+//		return batchPaymet;
+//	}
+
 }

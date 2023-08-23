@@ -4,7 +4,7 @@ import java.util.Set;
 
 import com.example.entityGallary.Videos;
 import com.example.entityPayment.Payment;
-import com.example.entityPayment.PaymentMaster;
+//import com.example.entityPayment.PaymentMaster;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -38,9 +38,9 @@ public class Batch
 	@JoinColumn(name = "batch_id")
 	private Set<Student> students;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="batch_id" )
-	private Set<PaymentMaster> payment_master;
+//	@OneToMany(cascade=CascadeType.ALL)
+//	@JoinColumn(name="batch_id" )
+//	private Set<PaymentMaster> payment_master;
 
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name = "batch_id")
@@ -122,14 +122,14 @@ public class Batch
 	}
 
 
-	public Set<PaymentMaster> getPayment_master() {
-		return payment_master;
-	}
-
-
-	public void setPayment_master(Set<PaymentMaster> payment_master) {
-		this.payment_master = payment_master;
-	}
+//	public Set<PaymentMaster> getPayment_master() {
+//		return payment_master;
+//	}
+//
+//
+//	public void setPayment_master(Set<PaymentMaster> payment_master) {
+//		this.payment_master = payment_master;
+//	}
 
 
 	public Set<Payment> getPayments() {

@@ -42,5 +42,15 @@ public class paymentController {
 	public void deletePaymentbyID(@RequestBody int id) {
 		payment_services.deletePayment(id);
 	}
+	
+	@GetMapping("api/getPaymentbystdID/{ID}")
+	public List<Payment> getPaymentByStdID(@PathVariable int ID) {
+		return payment_services.paymentByStdID(ID);
+	}
+	
+//	@GetMapping("api/getPaymentbybatchID/{ID}")
+//	public Optional<Payment> getPaymentByID(@PathVariable int ID) {
+//		return payment_services.getPaymentbyID(ID);
+//	}
 
 }

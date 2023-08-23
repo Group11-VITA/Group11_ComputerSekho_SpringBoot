@@ -8,4 +8,5 @@ public interface StaffManager {
 	 List<Staff> getStaff();
 	 void addStaff(Staff s1);
 	 void delete(int id);
+	 void updatestaff(Staff staff,int id);
 }

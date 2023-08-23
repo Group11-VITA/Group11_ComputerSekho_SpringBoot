@@ -28,5 +28,12 @@ public class StaffManagerImpl implements StaffManager{
 	public void delete(int id) {
 		repository.deleteById(id);
 	}
+	
+	@Override
+	public void updatestaff(Staff staff,int id) {
+		// TODO Auto-generated method stub
+		System.out.println("inside update method of service layer");
+		repository.updateStaff(id,staff.getStaff_name(),staff.getStaff_role());
+	}
 
 }
