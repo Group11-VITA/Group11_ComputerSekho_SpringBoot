@@ -30,6 +30,7 @@ public class Course
 	private String age_grp_type;
 	private boolean course_is_active=true;
 	private String cover_photo;
+	private String description;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "course_id", referencedColumnName="course_id")
@@ -122,6 +123,14 @@ public class Course
 
 	public void setStudent(Set<Student> student) {
 		Student = student;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	

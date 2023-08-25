@@ -24,9 +24,9 @@ package com.example.repositoryGallary;
 		@Modifying
 		@Query("update Album album set album.album_name= :name,album.album_description=:description,album.album_is_active=:albumisactive where album.id=:id")
 		void update(@Param("name") String album_name,@Param("description") String album_description,@Param("albumisactive") boolean album_is_active, int id);
-
 		
-
+		   @Query(value="Select * from Album  where album_name=:cat",nativeQuery=true)
+	     Optional<Album> cattype(@Param("cat") String cat);
 	 
 	}
 

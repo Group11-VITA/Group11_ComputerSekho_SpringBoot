@@ -2,12 +2,16 @@ package com.example.entityPayment;
 
 import java.sql.*;
 
+import com.example.entityCourseBatchStd.Student;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Payment {
@@ -21,6 +25,11 @@ public class Payment {
 	private boolean payment_receipt_send;
 	private double amount;
 	private String payment_type ;
+	
+	
+	 	@ManyToOne(cascade = CascadeType.ALL)
+	    @JoinColumn(name = "student_id")
+	    private Student student;
 	
 	public Payment() {
 		super();

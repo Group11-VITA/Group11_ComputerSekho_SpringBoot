@@ -5,9 +5,7 @@ package com.example.servicesGallary;
 
 import org.springframework.stereotype.Service;
 
-import com.example.entityGallary.Album;
-
-
+import com.example.entityGallary.*;
 
 	@Service
 	public interface AlbumManager {

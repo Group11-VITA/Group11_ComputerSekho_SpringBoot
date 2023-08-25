@@ -2,11 +2,14 @@ package com.example.entityStaffEnquiry;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
+
+import jakarta.persistence.OneToMany;
 @Entity
 public class Staff {
 	@Id
@@ -19,10 +22,23 @@ public class Staff {
 	private String username;
 	private String password;
 	private String staff_role;
-	@ManyToMany(mappedBy = "staff")
+	@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "staff_id", referencedColumnName="staff_id")
 	private Set<Followup> followup;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "staff_id", referencedColumnName="staff_id")
+	private Set<Enquiry> Enquiry;
+	
+	
 	public Set<Followup> getFollowup() {
 		return followup;
+	}
+	public Set<Enquiry> getEnquiry() {
+		return Enquiry;
+	}
+	public void setEnquiry(Set<Enquiry> enquiry) {
+		Enquiry = enquiry;
 	}
 	public void setFollowup(Set<Followup> followup) {
 		this.followup = followup;

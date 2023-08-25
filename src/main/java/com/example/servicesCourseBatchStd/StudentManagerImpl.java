@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.entityCourseBatchStd.Student;
+import com.example.entityCourseBatchStd.*;
 import com.example.repositoryCourseBatchStd.StudentRepository;
 
 
@@ -21,9 +21,20 @@ public class StudentManagerImpl implements StudentManager
 		return repository.findAll();
 	}
 	@Override
+//	public void addStudent(Student s) {
+//		// TODO Auto-generated method stub
+//		repository.save(s);
+//	}
+//	
 	public void addStudent(Student s) {
 		// TODO Auto-generated method stub
-		repository.save(s);
+		int batchId = s.getBatch().getBatch_id();
+        Batch batch = new Batch();
+        batch.setBatch_id(batchId);
+        s.setBatch(batch);
+
+        repository.save(s);
+		
 	}
 	@Override
 	public List<Student> getAll() {

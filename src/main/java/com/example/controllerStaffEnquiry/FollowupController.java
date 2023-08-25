@@ -1,8 +1,10 @@
 package com.example.controllerStaffEnquiry;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +15,7 @@ import com.example.servicesStaffEnquiry.FollowupManagerImp;
 
 
 @RestController
+@CrossOrigin("*")
 public class FollowupController {
 	@Autowired
 	FollowupManagerImp folloup;
@@ -30,5 +33,10 @@ public class FollowupController {
 	public void deletebyid(@PathVariable int id)
 	{
 		folloup.deletefollowup(id);
+	}
+	@GetMapping(value = "/getFollowups")
+	public Optional<Object[]>getDetails()
+	{
+		return folloup.findEnquiryWithFollowup();
 	}
 }

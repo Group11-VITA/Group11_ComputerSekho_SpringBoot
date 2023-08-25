@@ -22,16 +22,7 @@ public class Followup {
 	
 	private boolean followup_is_success;
 	
-	@ManyToMany
-	private Set<Staff> staff;
 	
-	
-	public Set<Staff> getStaff() {
-		return staff;
-	}
-	public void setStaff(Set<Staff> staff) {
-		this.staff = staff;
-	}
 	public int getFollowup_id() {
 		return followup_id;
 	}

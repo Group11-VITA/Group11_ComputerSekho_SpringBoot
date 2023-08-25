@@ -1,6 +1,7 @@
 package com.example.servicesStaffEnquiry;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,11 @@ public class FollowupManagerImp implements FollowupManager{
 		// TODO Auto-generated method stub
 		followuprepo.deleteById(id);
 	}
-	
+
+	@Override
+	public Optional<Object[]> findEnquiryWithFollowup() {
+		// TODO Auto-generated method stub
+		return followuprepo.findEnquiryWithFollowup();
+	}
+
 }

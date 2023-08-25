@@ -6,10 +6,8 @@ package com.example.servicesGallary;
 	import org.springframework.beans.factory.annotation.Autowired;
 	import org.springframework.stereotype.Service;
 
-import com.example.entityGallary.Album;
-import com.example.repositoryGallary.AlbumRepository;
-
-
+	import com.example.entityGallary.*;
+	import com.example.repositoryGallary.*;
 
 	@Service
 	public class AlbumManagerImpl implements AlbumManager{
@@ -36,7 +34,7 @@ import com.example.repositoryGallary.AlbumRepository;
 		@Override
 		public Optional<Album> getSelected(String cat) {
 			// TODO Auto-generated method stub
-			return Optional.empty();
+			return repository.cattype(cat);
 		}
 //
 //        @Override
@@ -51,11 +49,11 @@ import com.example.repositoryGallary.AlbumRepository;
 		}
 
 		
-//		@Override
-//		public Optional<Album> getSelected(String cat) {
-//			// TODO Auto-generated method stub
-//			return repository.listtype(cat);
-//		}
+		//@Override
+		//public Optional<Album> getSelected(String cat) {
+		// TODO Auto-generated method stub
+		//	return repository.listtype(cat);
+		//}
 	}
 
 		

@@ -1,18 +1,16 @@
 package com.example.controllerGallary;
 
 	import java.util.List;
+	import com.example.entityGallary.*;
 	import java.util.Optional;
 
 	import org.springframework.beans.factory.annotation.*;
 	import org.springframework.web.bind.annotation.*;
 
-import com.example.entityGallary.Album;
-import com.example.servicesGallary.AlbumManager;
-
-	
+	import com.example.servicesGallary.*;
 
 	    @RestController  
-		@CrossOrigin(origins = "http://localhost:3000")
+		@CrossOrigin( "*")
 		public class AlbumController 
 		{
 			@Autowired
@@ -38,7 +36,7 @@ import com.example.servicesGallary.AlbumManager;
 				manager.delete(aid);
 			 }
 			 
-			 @GetMapping(value = "api/getAlbumsByCat/{cat}")
+			 @GetMapping(value = "api/getAlbumsByname/{cat}")
 			 public Optional<Album> getAlbumCat(@PathVariable String cat)
 			 {
 				return manager.getSelected(cat);

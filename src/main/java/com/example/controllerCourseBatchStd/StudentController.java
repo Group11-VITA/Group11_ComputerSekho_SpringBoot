@@ -1,9 +1,13 @@
+
+
+
 package com.example.controllerCourseBatchStd;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,16 +21,17 @@ import com.example.servicesCourseBatchStd.StudentManagerImpl;
 import jakarta.annotation.PostConstruct;
 
 @RestController
+@CrossOrigin("*")
 public class StudentController {
 	@Autowired
 	private StudentManagerImpl manager;
 	
-	@GetMapping("api/students")
+	@GetMapping("api/getStudents")
 	public List<Student> getStudents()
 	{
 		return manager.getStudents();
 	}
-	@PostMapping("api/students")
+	@PostMapping("api/addStudents")
 	public void addStudent(@RequestBody Student s)
 	{
 		manager.addStudent(s);

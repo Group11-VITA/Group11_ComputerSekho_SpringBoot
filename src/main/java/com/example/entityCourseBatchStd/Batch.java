@@ -13,11 +13,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -29,27 +29,30 @@ public class Batch
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int batch_id;
 	private String batchname;
-	private LocalTime batch_start_time;
-	private LocalTime batch_end_time;
+	private Date batch_start_date;
+	private Date batch_end_date;
 	private boolean batch_is_active = true;
-	private LocalDateTime final_presentation_data;
+	private Date final_presentation_data;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "batch_id")
-	private Set<Student> students;
+	//@OneToMany(cascade = CascadeType.ALL)
+	//@JoinColumn(name = "batch_id")
 	
+//	@OneToMany(mappedBy = "batch", cascade = CascadeType.ALL)
+//	private Set<Student> students;
+//	
 //	@OneToMany(cascade=CascadeType.ALL)
 //	@JoinColumn(name="batch_id" )
 //	private Set<PaymentMaster> payment_master;
 
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name = "batch_id")
-	private Set<Payment> payments;
+//	@OneToMany(cascade=CascadeType.ALL)
+//	@JoinColumn(name = "batch_id")
+	//@OneToMany(mappedBy = "Batch", cascade = CascadeType.ALL)
+	//private Set<Payment> payments;
 	
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="batch_id")
-	private List<Videos> videos;
+//	@OneToMany(cascade = CascadeType.ALL)
+//	@JoinColumn(name="batch_id")
+//	private List<Videos> videos;
 
 
 	public int getBatch_id() {
@@ -72,23 +75,24 @@ public class Batch
 	}
 
 
-	public LocalTime getBatch_start_time() {
-		return batch_start_time;
+
+	public Date getBatch_start_date() {
+		return batch_start_date;
 	}
 
 
-	public void setBatch_start_time(LocalTime batch_start_time) {
-		this.batch_start_time = batch_start_time;
+	public void setBatch_start_date(Date batch_start_date) {
+		this.batch_start_date = batch_start_date;
 	}
 
 
-	public LocalTime getBatch_end_time() {
-		return batch_end_time;
+	public Date getBatch_end_date() {
+		return batch_end_date;
 	}
 
 
-	public void setBatch_end_time(LocalTime batch_end_time) {
-		this.batch_end_time = batch_end_time;
+	public void setBatch_end_date(Date batch_end_date) {
+		this.batch_end_date = batch_end_date;
 	}
 
 
@@ -102,24 +106,24 @@ public class Batch
 	}
 
 
-	public LocalDateTime getFinal_presentation_data() {
+	public Date getFinal_presentation_data() {
 		return final_presentation_data;
 	}
 
 
-	public void setFinal_presentation_data(LocalDateTime final_presentation_data) {
+	public void setFinal_presentation_data(Date  final_presentation_data) {
 		this.final_presentation_data = final_presentation_data;
 	}
 
 
-	public Set<Student> getStudents() {
-		return students;
-	}
-
-
-	public void setStudents(Set<Student> students) {
-		this.students = students;
-	}
+//	public Set<Student> getStudents() {
+//		return students;
+//	}
+//
+//
+//	public void setStudents(Set<Student> students) {
+//		this.students = students;
+//	}
 
 
 //	public Set<PaymentMaster> getPayment_master() {
@@ -132,28 +136,24 @@ public class Batch
 //	}
 
 
-	public Set<Payment> getPayments() {
-		return payments;
-	}
+//	public Set<Payment> getPayments() {
+//		return payments;
+//	}
+//
+//
+//	public void setPayments(Set<Payment> payments) {
+//		this.payments = payments;
+//	}
 
 
-	public void setPayments(Set<Payment> payments) {
-		this.payments = payments;
-	}
-
-
-	public List<Videos> getVideos() {
-		return videos;
-	}
-
-
-	public void setVideos(List<Videos> videos) {
-		this.videos = videos;
-	}
-
-	
-
-	
+//	public List<Videos> getVideos() {
+//		return videos;
+//	}
+//
+//
+//	public void setVideos(List<Videos> videos) {
+//		this.videos = videos;
+//	}
 
 
 	
