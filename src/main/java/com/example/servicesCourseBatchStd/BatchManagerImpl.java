@@ -13,24 +13,43 @@ import com.example.repositoryCourseBatchStd.BatchRepository;
 public class BatchManagerImpl implements BatchManager {
 
 	@Autowired
-	private BatchRepository repository;
+	private BatchRepository b_repository;
 	@Override
-	public List<Batch> getBatch() {
-		return repository.findAll();
+	public void save(Batch ref) 
+	{
+		b_repository.save(ref);
 	}
+	@Override
+	public List<Batch> getAll() {
+		
+		return b_repository.findAll();
+	}
+	@Override
+	public Batch getBatch(int batchno) {
+		
+		return b_repository.getBatch(batchno);
+	}
+	@Override
+	public List<Batch> getUpcomingBatch(){
+		return b_repository.getUpcomingBatch();
+	}
+	@Override
+	public List<Batch> getCurrentBatch(){
+		return b_repository.getCurrentBatch();
+	}
+	
+	
+	  @Override public List<Batch> getPastBatch(){ return
+	  b_repository.getPastBatch(); }
+	  
+	  @Override public List<Batch> getBatchByName(String batchName){
+		  return b_repository.getBatchByName(batchName);
+	  }
+	@Override
+	public List<Batch> getBatchByCourseId(int cid) {
+		// TODO Auto-generated method stub
+		return b_repository.getBatchByCourse_Id(cid);
+	}
+	 
 
-	@Override
-	public Optional<Batch> getBatchById(int id) {
-		return repository.findById(id);
-	}
-
-	@Override
-	public void addBatch(Batch b) {
-		repository.save(b);
-	}
-
-	@Override
-	public void deleteBatch(int id) {
-		repository.deleteById(id);
-	}
 }

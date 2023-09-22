@@ -15,19 +15,26 @@ public class Followup {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int followup_id;
-	
+	private int enquiry_id;
+	private int staff_id;
 	private String followup_msg;
-	
-	private boolean is_active;
-	
-	private boolean followup_is_success;
-	
-	
 	public int getFollowup_id() {
 		return followup_id;
 	}
 	public void setFollowup_id(int followup_id) {
 		this.followup_id = followup_id;
+	}
+	public int getEnquiry_id() {
+		return enquiry_id;
+	}
+	public void setEnquiry_id(int enquiry_id) {
+		this.enquiry_id = enquiry_id;
+	}
+	public int getStaff_id() {
+		return staff_id;
+	}
+	public void setStaff_id(int staff_id) {
+		this.staff_id = staff_id;
 	}
 	public String getFollowup_msg() {
 		return followup_msg;
@@ -35,21 +42,7 @@ public class Followup {
 	public void setFollowup_msg(String followup_msg) {
 		this.followup_msg = followup_msg;
 	}
-	public boolean isIs_active() {
-		return is_active;
-	}
-	public void setIs_active(boolean is_active) {
-		this.is_active = is_active;
-	}
-	public boolean isFollowup_is_success() {
-		return followup_is_success;
-	}
-	public void setFollowup_is_success(boolean followup_is_success) {
-		this.followup_is_success = followup_is_success;
-	}
-//	@Override
-//	public String toString() {
-//		return "Followup [followup_id=" + followup_id + ", followup_msg=" + followup_msg + ", is_active=" + is_active
-//				+ ", followup_is_success=" + followup_is_success + "]";
-//	}
+	
+	
+	
 }

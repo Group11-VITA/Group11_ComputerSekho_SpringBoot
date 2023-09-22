@@ -14,35 +14,16 @@ import jakarta.persistence.OneToMany;
 public class Staff {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY )
-	private int staff_id;
+private int staff_id;
+	
 	private String staff_name;
 	private String photo_url;
-	private int staff_mobile;
+	private String staff_mobile;
 	private String staff_email;
-	private String username;
-	private String password;
+	private String staff_username;
+	private String staff_password;
 	private String staff_role;
-	@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "staff_id", referencedColumnName="staff_id")
-	private Set<Followup> followup;
-	
-	@OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "staff_id", referencedColumnName="staff_id")
-	private Set<Enquiry> Enquiry;
-	
-	
-	public Set<Followup> getFollowup() {
-		return followup;
-	}
-	public Set<Enquiry> getEnquiry() {
-		return Enquiry;
-	}
-	public void setEnquiry(Set<Enquiry> enquiry) {
-		Enquiry = enquiry;
-	}
-	public void setFollowup(Set<Followup> followup) {
-		this.followup = followup;
-	}
+	private boolean staff_isactive=true;
 	public int getStaff_id() {
 		return staff_id;
 	}
@@ -61,10 +42,10 @@ public class Staff {
 	public void setPhoto_url(String photo_url) {
 		this.photo_url = photo_url;
 	}
-	public int getStaff_mobile() {
+	public String getStaff_mobile() {
 		return staff_mobile;
 	}
-	public void setStaff_mobile(int staff_mobile) {
+	public void setStaff_mobile(String staff_mobile) {
 		this.staff_mobile = staff_mobile;
 	}
 	public String getStaff_email() {
@@ -73,17 +54,17 @@ public class Staff {
 	public void setStaff_email(String staff_email) {
 		this.staff_email = staff_email;
 	}
-	public String getUsername() {
-		return username;
+	public String getStaff_username() {
+		return staff_username;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setStaff_username(String staff_username) {
+		this.staff_username = staff_username;
 	}
-	public String getPassword() {
-		return password;
+	public String getStaff_password() {
+		return staff_password;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setStaff_password(String staff_password) {
+		this.staff_password = staff_password;
 	}
 	public String getStaff_role() {
 		return staff_role;
@@ -91,12 +72,14 @@ public class Staff {
 	public void setStaff_role(String staff_role) {
 		this.staff_role = staff_role;
 	}
-	//@Override
-	//public String toString() {
-//		return "Staff [staff_id=" + staff_id + ", staff_name=" + staff_name + ", photo_url=" + photo_url + ", staff_mobile="
-//				+ staff_mobile + ", staff_email=" + staff_email + ", username=" + username + ", password=" + password
-//				+ ", staff_role=" + staff_role + "]";
-	//}
+	public boolean isStaff_isactive() {
+		return staff_isactive;
+	}
+	public void setStaff_isactive(boolean staff_isactive) {
+		this.staff_isactive = staff_isactive;
+	}
+	
+	
 
 }
 

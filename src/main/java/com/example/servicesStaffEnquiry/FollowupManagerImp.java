@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.entityStaffEnquiry.Enquiry;
 import com.example.entityStaffEnquiry.Followup;
 import com.example.repositoryStaffEnquiry.FollowupRepository;
 
@@ -16,27 +17,23 @@ public class FollowupManagerImp implements FollowupManager{
 	FollowupRepository followuprepo;
 
 	@Override
-	public void addFollowup(Followup f1) {
+	public List<Enquiry> GetAllFollowUp() {
 		// TODO Auto-generated method stub
-		followuprepo.save(f1);
+	
+		return followuprepo.getAll();
 	}
 
 	@Override
-	public List<Followup> getFollowup() {
+	public List<Enquiry> GetFollowUpByStaffId(int staffid) {
 		// TODO Auto-generated method stub
-		return followuprepo.findAll();
+		return followuprepo.getBystaffId(staffid);
 	}
 
 	@Override
-	public void deletefollowup(int id) {
+	public void Add(Followup follow) {
 		// TODO Auto-generated method stub
-		followuprepo.deleteById(id);
-	}
-
-	@Override
-	public Optional<Object[]> findEnquiryWithFollowup() {
-		// TODO Auto-generated method stub
-		return followuprepo.findEnquiryWithFollowup();
+		
+		followuprepo.save(follow);
 	}
 
 }

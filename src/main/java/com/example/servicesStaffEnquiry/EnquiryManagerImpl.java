@@ -15,43 +15,72 @@ public class EnquiryManagerImpl implements EnquiryManager {
 	@Autowired
 	EnquiryRepository erepository;
 	
-	@Override
-	public void addEnquiry(Enquiry e1) {
-		// TODO Auto-generated method stub
-		erepository.save(e1);
+	public void Formsubmit(Enquiry enq) {
+		erepository.save(enq);
+		// e.addEnquiry(enq.getEnquirer_name(), enq.getEnquirer_mobile(),
+		// enq.getEnquirer_email_id(), enq.getEnquirer_query(), enq.getStaff_id());;
 	}
 
-	@Override
-	public List<Enquiry> getEnquiry() {
-		// TODO Auto-generated method stub
+	public List<Enquiry> GetAll() {
 		return erepository.findAll();
 	}
 
-	@Override
-	public void deleteEnquiry(int id) {
-		// TODO Auto-generated method stub
-		erepository.deleteById(id);
-	}
-
-	@Override
-	public void deleteall() {
-		// TODO Auto-generated method stub
-		erepository.deleteAll();
-	}
-
-	@Override
-	public void updateEnquiry(Enquiry e, int id) {
-		// TODO Auto-generated method stub
-		erepository.update(e.getEnquirer_name(), e.getEnquirer_email_id(), e.getEnquirer_mobile(), e.getEnquirer_alternate_mobile(), e.getEnquirer_address(), e.getEnquirer_query(), e.getEnquiry_date(), e.isEnquiry_processed_flag(),e.getInquiry_counter(), id);
-		}
-
-	@Override
-	public Optional<Enquiry> getbyIdEnquiry(int id) {
-		// TODO Auto-generated method stub
+	public Optional<Enquiry> FindById(int id) {
 		return erepository.findById(id);
 	}
 
+	@Override
+	public Optional<Enquiry> GetByName(String name) {
+
+		Optional<Enquiry> p = erepository.findByName(name);
+		return p;
+	}
+
+	/*public void update(Enquiry enq, int id) {
+		e.updatedata(enq.getEnquirer_name(),enq.getEnquirer_mobile(),enq.getEnquirer_email_id(), enq.getEnquirer_query(), enq.getClosure_reason(),enq.isEnquiry_processed_flag(),id);
+
+	}*/
 	
+//	@Override
+//	public void updateEnquiry(int enquiryId, Enquiry enquiry) {
+//        Optional<Enquiry> existingEnquiry = e.findById(enquiryId);
+//
+//        // Update the existing Enquiry object with the new values
+//        existingEnquiry.(enquiry.getEnquirer_name());
+//        existingEnquiry.setEnquirerMobile(enquiry.getEnquirer_mobile());
+//        existingEnquiry.setEnquirerEmailId(enquiry.getEnquirer_email_id());
+//        existingEnquiry.setEnquiryDate(enquiry.getEnquiry_date());
+//        existingEnquiry.setFollowUpDate(enquiry.getFollow_up_date());
+//        existingEnquiry.setClosureReason(enquiry.getClosure_reason());
+//        existingEnquiry.setFollowupMsg(enquiry.getFollowup_msg());
+//        existingEnquiry.setEnquirerQuery(enquiry.getEnquirer_query());
+//        existingEnquiry.setEnquiryProcessedFlag(enquiry.isEnquiryProcessedFlag());
+//        existingEnquiry.setStaffId(enquiry.getStaffId());
+//
+//        // Save the updated Enquiry object
+//        enquiryRepository.save(existingEnquiry);
+//    }
 
+	@Override
+	public List<Enquiry> getEnquiriesByStaffId(int staff_id) {
+		return erepository.findByStaff_id(staff_id);
+	}
 
+	@Override
+	public void update(Enquiry e, int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateEnquiry(int enquiryId, Enquiry enquiry) {
+		// TODO Auto-generated method stub
+		erepository.updatedata(enquiry.getEnquirer_name(),enquiry.getEnquirer_mobile(), enquiry.getEnquirer_email_id(), enquiry.getEnquirer_query(),enquiry.getClosure_reason(),enquiry.getFollowup_msg(),enquiry.isEnquiry_processed_flag(),enquiryId);
+	}
+
+	@Override
+	public void updateprocessflag(int id) {
+		erepository.changeflagbyid(id);
+	
+	}
 }

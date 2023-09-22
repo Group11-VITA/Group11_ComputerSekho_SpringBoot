@@ -19,26 +19,51 @@ import com.example.servicesCourseBatchStd.BatchManager;
 @CrossOrigin("*")
 public class BatchController {
 	@Autowired
-    BatchManager b_manager;
-	@GetMapping(value="/api/getBatch")
-	public List<Batch>getBatch()
+	private BatchManager service;
+	
+	
+	  @PostMapping("/api/addBatch") 
+	  public void saveBatch(@RequestBody Batch ref) {
+		  System.out.println("a");
+		  System.out.println(ref);
+	  service.save(ref); 
+	  }
+	 
+	
+	@GetMapping("/api/batch")
+	public List<Batch> getAllBatch()
 	{
-		return b_manager.getBatch();
+		return service.getAll();
 	}
-	@GetMapping(value="/api/getBatch/{id}")
-	public Optional<Batch> getBatchById(@PathVariable int id)
+	@GetMapping("/api/batch/{batchno}")
+	public Batch getBatch(@PathVariable int batchno)
 	{
-		return b_manager.getBatchById(id);
+		return service.getBatch(batchno); 
 	}
-	@PostMapping(value="/api/addBatch")
-	public void addBatch(@RequestBody Batch b)
-	{
-		b_manager.addBatch(b);
+	
+	@GetMapping("/api/upcomingBatch")
+	public List<Batch> getUpcomingBatch(){
+		return service.getUpcomingBatch();
 	}
-	@DeleteMapping(value="/api/deleteBatch/{id}")
-	public void deleteBatch(@PathVariable int id)
-	{
-		b_manager.deleteBatch(id);
+	
+	@GetMapping("/api/getCurrentBatch")
+	public List<Batch> getCurrentBatch(){
+		return service.getCurrentBatch();
+	}
+	
+	@GetMapping("/api/getBatchByName/{batchName}")
+	public List<Batch> getBatchByName(@PathVariable String batchName){
+		return service.getBatchByName(batchName);
+	}
+	
+	@GetMapping("/api/getPastBatch")
+	public List<Batch> getPastBatch(){
+		return service.getPastBatch(); 
+	}
+
+	@GetMapping("/api/getBatchByCourseId/{cid}")
+	public List<Batch> getBatchByCourseId(@PathVariable int cid){
+		return service.getBatchByCourseId(cid); 
 	}
 }
 

@@ -9,10 +9,13 @@ import com.example.entityCourseBatchStd.Batch;
 
 
 public interface BatchManager {
-	List<Batch>getBatch();
-	Optional<Batch> getBatchById(int id);
-	void addBatch(Batch b);
-	void deleteBatch(int id);
-	//void updateBatch(Batch batch);
+	void save(Batch ref);
+	List<Batch> getAll();
+	Batch getBatch(int batchno);
+	List<Batch> getUpcomingBatch();
+	List<Batch> getCurrentBatch();
+	List<Batch> getPastBatch();
+	List<Batch> getBatchByName(String batchName);
+	List<Batch> getBatchByCourseId(int cid);
 }
 

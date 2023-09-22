@@ -14,43 +14,48 @@ import com.example.repositoryCourseBatchStd.StudentRepository;
 public class StudentManagerImpl implements StudentManager 
 {
 	@Autowired
-	private StudentRepository repository;
+	StudentRepository repository;
+	
 	@Override
-	public List<Student> getStudents() {
-		
-		return repository.findAll();
-	}
-	@Override
-//	public void addStudent(Student s) {
-//		// TODO Auto-generated method stub
-//		repository.save(s);
-//	}
-//	
-	public void addStudent(Student s) {
+	public List<Student> getstudent() {
 		// TODO Auto-generated method stub
-		int batchId = s.getBatch().getBatch_id();
-        Batch batch = new Batch();
-        batch.setBatch_id(batchId);
-        s.setBatch(batch);
+		return repository.findAll();
+	}	
 
-        repository.save(s);
-		
-	}
-	@Override
-	public List<Student> getAll() {
+   @Override
+	public void update(Student std, int id) {
 		// TODO Auto-generated method stub
-		return repository.findAll();
-	}
+	  repository.updateStudentdata(std.getStudent_name(),std.getStudent_address(),std.getStudent_gender(), std.getStudent_dob(),std.getStudent_qualification(),std.getStudent_mobile(),id);
+}
+
 	@Override
-	public Optional<Student> getStudents(int id) {
+	public Optional<Student> getSelectedbyid(int id) {
 		// TODO Auto-generated method stub
 		return repository.findById(id);
 	}
+
 	@Override
-	public void delete(int id) {
+	public List<Student> getSelected(String name) {
 		// TODO Auto-generated method stub
-		repository.deleteById(id);
-		
+		return repository.listtype(name);
+	}
+
+	@Override
+	public void addstudent(Student student) {
+		// TODO Auto-generated method stub
+		repository.save(student);
+	}
+	
+	@Override
+	public List<Student> getstudentenquiry_id(int getbyenquiry_id) {
+		// TODO Auto-generated method stub
+		return repository.getbyenquiry_id(getbyenquiry_id);
+	}
+  
+	@Override
+	public void delstud(int student_id) {
+		// TODO Auto-generated method stub
+		repository.deleteById(student_id);
 	}
 	
 

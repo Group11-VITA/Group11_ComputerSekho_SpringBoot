@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.entityStaffEnquiry.Enquiry;
 import com.example.entityStaffEnquiry.Followup;
 import com.example.servicesStaffEnquiry.FollowupManagerImp;
 
@@ -19,24 +21,21 @@ import com.example.servicesStaffEnquiry.FollowupManagerImp;
 public class FollowupController {
 	@Autowired
 	FollowupManagerImp folloup;
-	@GetMapping(value = "/getFollowup")
-	public List<Followup>get()
+	@GetMapping("api/followup")
+	public List<Enquiry> GetAllEnquiry()
 	{
-		return folloup.getFollowup();
+		return folloup.GetAllFollowUp();
 	}
-	@PostMapping(value = "/addFollowup")
-	public void add(Followup f1)
+	
+	@GetMapping(value="api/followup/{id}")
+	public List<Enquiry>GetByStaff(@PathVariable int id)
 	{
-		folloup.addFollowup(f1);
+		return folloup.GetFollowUpByStaffId(id);
 	}
-	@PostMapping(value = "/delete/{id}")
-	public void deletebyid(@PathVariable int id)
+	
+	@PostMapping(value = "api/followup/")
+	public void add(@RequestBody Followup follow)
 	{
-		folloup.deletefollowup(id);
-	}
-	@GetMapping(value = "/getFollowups")
-	public Optional<Object[]>getDetails()
-	{
-		return folloup.findEnquiryWithFollowup();
+		folloup.Add(follow);
 	}
 }
